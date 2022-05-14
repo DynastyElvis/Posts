@@ -3,7 +3,7 @@ from .forms import *#RegistrationForm, LoginForm
 from .models import *#RegistrationForm, LoginForm
 
 from post import app#, db, bcrypt
-
+from flask_login import login_user, current_user, logout_user, login_required
 post = [
     {
         'author': 'Elvis',
