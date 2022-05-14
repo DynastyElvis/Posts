@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-login = LoginManager(app)
+login_manager = LoginManager(app)
 Bcrypt = Bcrypt(app)
 
 app.config['SECRET_KEY'] = '123456789'
