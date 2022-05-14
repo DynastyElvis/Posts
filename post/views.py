@@ -2,8 +2,11 @@ from flask import redirect, render_template, url_for, flash
 from .forms import *#RegistrationForm, LoginForm
 from .models import *#RegistrationForm, LoginForm
 
-from post import app#, db, bcrypt
+from post import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
+
+
+
 post = [
     {
         'author': 'Elvis',
@@ -45,9 +48,11 @@ def profile():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        pw_hash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user=User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
+        login_user(user)
         
         
         flash(f'Account created for {form.username.data}!', 'success')

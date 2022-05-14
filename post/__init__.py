@@ -2,11 +2,18 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
+
+
+
+
+
 app = Flask(__name__)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
+Bcrypt = Bcrypt(app)
 
 app.config['SECRET_KEY'] = '123456789'
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
