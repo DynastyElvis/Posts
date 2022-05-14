@@ -24,5 +24,5 @@ class Post(db.Model):# Post class
     
     
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.title}', '{self.date}', '{self.author}')"
 
