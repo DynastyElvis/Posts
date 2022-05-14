@@ -13,7 +13,7 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login_manager = LoginManager(app)
-Bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app)
 
 app.config['SECRET_KEY'] = '123456789'
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
