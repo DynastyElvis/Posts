@@ -32,6 +32,11 @@ def hello_world():
     return render_template('index.html', posts=post)
 
 
+@app.route("/profile")
+def profile():
+    return render_template('profile.html', title='User Profile')
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
