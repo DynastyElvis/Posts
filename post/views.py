@@ -1,5 +1,5 @@
-from flask import render_template, url_for
-from .forms import RegistrationForm, LoginForm
+from flask import redirect, render_template, url_for, flash
+from .forms import *#RegistrationForm, LoginForm
 from post import app#, db, bcrypt
 
 post = [
@@ -39,7 +39,7 @@ def profile():
     return render_template('profile.html', title='User Profile')
 
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -48,7 +48,7 @@ def register():
     
     return render_template('register.html', title='Register', form=form)
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     return render_template('login.html', title='Register', form=form)

@@ -34,9 +34,12 @@ rel="stylesheet"
      <div class="container">
          {% with messages = get_flashed_messages(with_categories=true) %}
          <div class="my-1">
-            {% if messages%}
+            {% if messages %}
             {% for category, message in messages %}
-            <div class="alert alert-{{category}}"></div>
+            <div class="alert alert-{{category}}">
+                {{ message }}
+            </div>
+            {% endfor%}
             {% endif%}
 
          </div>
