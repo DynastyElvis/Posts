@@ -34,7 +34,7 @@
           
             {% if current_user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('logout') }}">Add your favourite Pitch</a>
+              <a class="nav-link" href="{{ url_for('login') }}">Add your favourite Pitch</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
@@ -53,7 +53,7 @@
       </div>
       <!-- Collapsible wrapper -->
   
-      {% if current_user.is_authonticated%}
+      {% if current_user.is_authenticated %}
 
       <!-- Right elements -->
       <div class="d-flex align-items-center">
@@ -121,9 +121,6 @@
           </ul>
         </div>
       </div>
-
-
-
       {% endif %}
       <!-- Right elements -->
     </div>
