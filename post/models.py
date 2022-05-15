@@ -40,7 +40,7 @@ class Post(db.Model):# Post class
     title = db.Column(db.String(120), nullable=False)
     content = db.Column(db.String(300), unique=True, nullable=False)
     #image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-    date = db.Column(db.String(60), nullable=False,  default=datetime.utcnow) 
+    date = db.Column(db.DateTime, nullable=False,  default=datetime.utcnow) 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)    
     
     
