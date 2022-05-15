@@ -31,17 +31,30 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('home') }}">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-          </li>
+          
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Add your favourite Pitch</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+            </li>
+            {% endif %}
+
         </ul>
         <!-- Left links -->
       </div>
       <!-- Collapsible wrapper -->
   
+      {% if current_user.is_authonticated%}
+
       <!-- Right elements -->
       <div class="d-flex align-items-center">
         <!-- Icon -->
@@ -103,14 +116,15 @@
               <a class="dropdown-item" href="#">My profile</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Settings</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="{ url_for('logout') }}">Logout</a>
             </li>
           </ul>
         </div>
       </div>
+
+
+
+      {% endif %}
       <!-- Right elements -->
     </div>
     <!-- Container wrapper -->

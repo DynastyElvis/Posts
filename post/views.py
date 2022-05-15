@@ -65,18 +65,19 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-     if current_user.is_authenticated:
-            return redirect(url_for('home'))
-     form = LoginForm()    
-     if form.validate_on_submit():
-        pw_hash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user=User(username=form.username.data, email=form.email.data, password=form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
-        
-        
-        flash(f'Account created for {form.username.data}!', 'success')
+    if current_user.is_authenticated:
         return redirect(url_for('home'))
-   
-     return render_template('login.html', title='Register', form=form)
+    form = LoginForm()    
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):    
+            login_user(user)
+            flash(f'Login for {form.username.data}!', 'successful')
+            return redirect(url_for('home'))
+        
+    return render_template('login.html', title='login', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
