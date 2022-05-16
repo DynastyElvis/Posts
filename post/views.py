@@ -26,6 +26,11 @@ def profile():
         db.session.commit()
         flash('Account has been updated successfully!', 'success')
         return redirect(url_for('profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+    
+    
     return render_template('profile.html', title='User Profile', form=form)
 
 @app.route("/new/post", methods=['GET', 'POST'])
