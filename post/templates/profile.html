@@ -12,8 +12,8 @@
 
         </div>
         <div class="info-name mx-3 mt-3">
-            <p>Username</p>
-            <p>Email</p>
+            <p>{{ current_user.username}}</p>
+            <p>{{ current_user.email}}</p>
         </div>
     </div>
 
@@ -31,17 +31,22 @@
       </div>
       <div class="form-group">
           {{ form.username.label(class="form-control-label") }}
-          {{ form.usernam(class="form-control") }}
+          {{ form.username(class="form-control") }}
 
       </div>
-   
+
+
+      <div class="form-group mt-3">
+        {{ form.avator.label() }}
+        {{ form.avator(class="form-check-file") }}
+
+    </div>
 
       <div class="form-group">
           {{ form.submit(class="btn btn-outline-info my-4") }}
 
-      </div>
-
-       </fieldset>
+            </div>
+        </fieldset>
       </form>
 
 </div>

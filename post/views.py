@@ -1,7 +1,8 @@
 from flask import redirect, render_template, url_for, flash
 from .forms import *#RegistrationForm, LoginForm
 from .models import *#RegistrationForm, LoginForm
-
+import secrets
+import os
 from post import app, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -15,12 +16,22 @@ def home():
     return render_template('index.html', posts=posts)
 
 
+def save_avatar(form_avatar):
+    random_hex = secrets.token_hex(8)
+    _, file_ext = os.path.splitext(form_avatar.filename)
+    avatar_fn = random_hex + file_ext
+    avatar_path = os.path.join(app.root_path, 'static/img', avatar_fn)
+    form_avatar.save(avatar_path)
+    return avatar_fn
+
+
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
     form = UpdateProfileForm
     if form.validate_on_submit():
         if form.avator.data:
-            pass
+            avatar_file = save_avatar(form.avator.data)
+            current_user.avatar = avatar_file
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
