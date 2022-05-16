@@ -34,18 +34,16 @@ rel="stylesheet"
     <div class="container">
         <div class="row">
             <div class="col-8">
-
-
-         {% with messages = get_flashed_messages(with_categories=true) %}
-         <div class="my-1">
-            {% if messages %}
-            {% for category, message in messages %}
-            <div class="alert alert-{{category}}">
-                {{ message }}
-            </div>
-            {% endfor %}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                <div class="my-1">
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{category}}">
+                        {{ message }}
+                            </div>
+                    {% endfor %} 
             {% endif%}
-</div>
+                </div>
             {% endwith %}
 
             {% block content %}
@@ -53,9 +51,9 @@ rel="stylesheet"
             
             </div>
                 <div class="col-4">
-                    <div class="sidebar fixed mt-2">
+                    <div class="sidebar fixed mt-3">
                         <h2>
-                            Our Side Nav
+                            Access Navigation
                         </h2>
                         <p>More Information</p>
                         <nav>
@@ -66,13 +64,11 @@ rel="stylesheet"
                                 <li>User4</li>
                             </ul>
                         </nav>
-                    </div>
-
-                
+                    </div>                
             </div>
         </div>
     </div>
-   
+
 
 
 

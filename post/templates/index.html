@@ -5,32 +5,24 @@
 
     {% for post in posts %}
 
-<a href="">
+   <a href="">
     <div class="card mt-3">
         <div class="card-header">
-            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" alt="user image"
-            height="35"
-            width="35"
-            class="roounded-circle"
-            >
-            <a href="" class="text-capitalize">{{post.author}}</a>
+            <img src="https://raw.githubusercontent.com/DynastyElvis/Chat-My-PORTFOLIO/main/images/squareDp.jpg"
+             alt="user image"
+             height="35"
+             width="35"
+             class="rounded-circle">
+             >
+            {{ post.author }}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
         </div>
-        <div class="card-body p-2">
-         <blockquote>
-            <h5 class="card-title">{{post.title}}</h5>
-            <footer>
-                <cite>
-                    <p class="card-text">{{post.content}}</p>
-                    <br><small><div class="card-footer text-muted">{{post.date}}</div>
-                    </small>
-                </cite>
-            </footer>
-            <a href="#" class="btn btn-primary">Comment</a>
-         </blockquote>
-        </div>
+        <div class="card-footer text-muted">{{ post.date }}</div>
     </div>
-</a>
-    {% endfor %}
+   </a>
 
+{% endfor %}
 
 {% endblock %}
