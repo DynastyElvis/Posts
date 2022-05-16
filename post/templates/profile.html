@@ -2,6 +2,44 @@
 
 
 {% block content %}
-<h1 class="mt-5 p-3">Welcome User</h1>
-<a class="mx-4" href="{{ url_for('home') }}">Home Page</a>
+<div class="container">
+    <div class="card p-3">
+        <div class="account-info">
+            <img src="https://raw.githubusercontent.com/DynastyElvis/Chat-My-PORTFOLIO/main/images/squareDp.jpg" alt="profile pic"
+            class="img-fluid profile-image" />
+        </div>
+        <div>
+            <p class="info-username">Username</p>
+            <p class="info-username">Email</p>
+        </div>
+    </div>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+       <fieldset>
+          <legend class="mt-5">
+              Welcome Back to Pitches 
+          </legend>
+       
+        <div class="form-group">
+          {{ form.email.label(class="form-control-label") }}
+          {{ form.email(class="form-control") }}
+
+      </div>
+      <div class="form-group">
+          {{ form.username.label(class="form-control-label") }}
+          {{ form.usernam(class="form-control") }}
+
+      </div>
+   
+
+      <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info my-4") }}
+
+      </div>
+
+       </fieldset>
+      </form>
+
+</div>
 {% endblock %}

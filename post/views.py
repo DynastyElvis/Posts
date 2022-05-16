@@ -17,7 +17,16 @@ def home():
 
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html', title='User Profile')
+    form = UpdateProfileForm
+    if form.validate_on_submit():
+        if form.avator.data:
+            pass
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Account has been updated successfully!', 'success')
+        return redirect(url_for('profile'))
+    return render_template('profile.html', title='User Profile', form=form)
 
 @app.route("/new/post", methods=['GET', 'POST'])
 def create():
