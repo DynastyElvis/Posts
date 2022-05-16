@@ -33,14 +33,14 @@ class User (db.Model, UserMixin): # User class
     posts = db.relationship('Post', backref='author', lazy=True)
     
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.avator}')"
+        return f"User('{self.username}', '{self.email}', '{self.avator}',)"
     
-class Post(db.Model):# Post class
+class Post(db.Model, UserMixin):# Post class
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
     content = db.Column(db.String(300), unique=True, nullable=False)
     #image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-    date = db.Column(db.DateTime, nullable=False,  default=datetime.utcnow) 
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)    
     
     
