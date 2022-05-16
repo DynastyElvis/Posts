@@ -40,9 +40,9 @@ def profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
+    avator = url_for('static', filename=f'img/{current_user.avator}') 
     
-    
-    return render_template('profile.html', title='User Profile', form=form)
+    return render_template('profile.html', title='User Profile', form=form, avator=avator)
 
 @app.route("/new/post", methods=['GET', 'POST'])
 def create():
