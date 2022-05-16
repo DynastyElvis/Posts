@@ -13,12 +13,14 @@
              height="35"
              width="35"
              class="rounded-circle">
-         <a href="" class="text-capitalize">{{ post.author }}</a>
+         <a href="" class="text-capitalize">{{ post.author.username }}</a>
             </div>
         <div class="card-body p-2">
             <blockquote>
                 <h5 class="card-title">{{ post.title }}</h5>
-                <footer><cite><p class="card-text">{{ post.content }}</p><br><small><div class="card-footer text-muted">{{ post.date }}</div></small></cite></footer>
+                <footer><cite><p class="">{{ post.content }}</p><br><small>
+                    <div class="text-muted">{{ post.date.strftime('%d-%m-%Y') }}</div></small>
+                </cite></footer>
             </blockquote>
         </div>
     </div>
