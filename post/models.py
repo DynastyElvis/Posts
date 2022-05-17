@@ -24,6 +24,11 @@ def load_user(user_id):
 #         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 
+# class Post(db.Model):
+#     user=db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
+
 class User (db.Model, UserMixin): # User class
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
